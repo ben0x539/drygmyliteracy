@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "org._1d6.drygmyliteracy.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "DrygmyTileMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

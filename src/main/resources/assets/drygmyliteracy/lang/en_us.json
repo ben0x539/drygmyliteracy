@@ -1,0 +1,13 @@
+{
+  "itemGroup.drygmyliteracy": "Example Mod Tab",
+  "block.drygmyliteracy.example_block": "Example Block",
+  "item.drygmyliteracy.example_item": "Example Item",
+
+  "drygmyliteracy.configuration.title": "Drygmy Literacy Configs",
+  "drygmyliteracy.configuration.section.drygmyliteracy.common.toml": "Drygmy Literacy Configs",
+  "drygmyliteracy.configuration.section.drygmyliteracy.common.toml.title": "Drygmy Literacy Configs",
+  "drygmyliteracy.configuration.items": "Item List",
+  "drygmyliteracy.configuration.logDirtBlock": "Log Dirt Block",
+  "drygmyliteracy.configuration.magicNumberIntroduction": "Magic Number Text",
+  "drygmyliteracy.configuration.magicNumber": "Magic Number"
+}
