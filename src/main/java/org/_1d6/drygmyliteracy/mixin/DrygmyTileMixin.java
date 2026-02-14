@@ -35,12 +35,6 @@ public abstract class DrygmyTileMixin extends SummoningTile {
     @Unique
     private String currentEntity;
 
-//    @Inject(method = "generateItems", at = @At(value = "HEAD"))
-//    private void generateItemsStart(CallbackInfo ci) {
-//        DrygmyLiteracy.LOGGER.debug("in generateItemsStart");
-//        lootTableEntries = new ArrayList<>();
-//    }
-
     @Redirect(
             method = "generateItems",
             at = @At(
@@ -108,15 +102,17 @@ public abstract class DrygmyTileMixin extends SummoningTile {
         currentEntity = null;
 
         ItemStack book = null;
+        LecternBlockEntity lectern = null;
         var pos = getBlockPos();
         if (level == null) { return; }
         for (Direction d : Direction.values()) {
             var adj = pos.relative(d);
-            if (level.getBlockEntity(adj) instanceof LecternBlockEntity lectern) {
-                ItemStack stack = lectern.getBook();
+            if (level.getBlockEntity(adj) instanceof LecternBlockEntity l) {
+                ItemStack stack = l.getBook();
                 if (stack.isEmpty()) { continue; }
                 if (stack.is(Items.WRITABLE_BOOK)) {
                     book = stack;
+                    lectern = l;
                     break;
                 }
             }
@@ -139,13 +135,19 @@ public abstract class DrygmyTileMixin extends SummoningTile {
             var total = r.amount * r.stack.getCount();
             var item = r.stack.getHoverName().getString();
             DrygmyLiteracy.LOGGER.debug("  From {}: {}x {}", r.entity, total, item);
-            boolean ok = w.writeLine(String.format("From %s: %dx %s", r.entity, total, item));
+            boolean ok = w.writeLine(String.format("From %s: %dx %s.", r.entity, total, item));
             if (!ok) { // book looks full
                 DrygmyLiteracy.LOGGER.debug("book full! ending early!");
                 break;
             }
         }
         w.update(book);
+
+        // Looks like we need to do this apparent no-op to make sure we can
+        // flip to the newly added pages in the lectern GUI. It's
+        // unfortunate that it also resets the book so that the first
+        // page is the currently opened page.
+        lectern.setBook(book);
     }
 
     // I assume this needs to exist for the super class but is never called
