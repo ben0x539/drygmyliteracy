@@ -125,9 +125,9 @@ public abstract class DrygmyTileMixin extends SummoningTile {
 
         BookWriter w = new BookWriter(book);
 
-        String now = ZonedDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+        String now = ZonedDateTime.now().format(DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm:ss"));
         DrygmyLiteracy.LOGGER.debug("Received loot at {}", now);
-        w.writeLine("Items obtained at " + now);
+        w.writeLine(now + ":");
         for (LootRecord r : entries) {
             if (r.amount == 0 || r.stack.isEmpty()) {
                 continue;
