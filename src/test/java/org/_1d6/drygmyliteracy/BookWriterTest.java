@@ -3,12 +3,12 @@ package org._1d6.drygmyliteracy;
 import java.util.Arrays;import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BookWriterTest {
-
     @org.junit.jupiter.api.Test
     void getWrapPoint() {
         assertEquals(1, BookWriter.getWrapPoint("m"));
         assertEquals(19, BookWriter.getWrapPoint("mmmmmmmmmmmmmmmmmmmm"));
-        assertEquals(57, BookWriter.getWrapPoint("'''''''''''''''''''''''''''''''''''''''''''''''''''''''''m"));
+        assertEquals(57,
+            BookWriter.getWrapPoint("'''''''''''''''''''''''''''''''''''''''''''''''''''''''''m"));
         assertEquals(Arrays.asList(
             "I'm just writing a",
             "bunch of nonsense",

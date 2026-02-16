@@ -107,6 +107,11 @@ public abstract class DrygmyTileMixin extends SummoningTile {
         if (level == null) { return; }
         for (Direction d : Direction.values()) {
             var adj = pos.relative(d);
+            // TODO: maybe search a slightly larger radius so the lectern can
+            // be placed in a way that doesn't force it to send a redstone
+            // signal to the henge when a page is turned...
+            //
+             // maybe lecterns are bad actually
             if (level.getBlockEntity(adj) instanceof LecternBlockEntity l) {
                 ItemStack stack = l.getBook();
                 if (stack.isEmpty()) { continue; }

@@ -15,7 +15,7 @@ public class BookWriter {
     // and track a new, in-progress page using regular strings and then
     // send that into a passthrough filterable?
     //
-    // We maintain the invariant of pages having 100 or less elements, and
+    // We maintain the invariant of pages having 100 or fewer elements, and
     // additionally keep newPage null if it is at 100 elements. newPage of
     // course has to be under 14 elements.
     private static final int PAGES_PER_BOOK = 100;
