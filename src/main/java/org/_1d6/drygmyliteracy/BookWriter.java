@@ -107,6 +107,7 @@ public class BookWriter {
     }
 
     private static int getPixelWidth(int c) {
+        // widths taken from https://gist.github.com/aerulion/9c5aac21c3efa5aa03b6f875dbe808de
         return switch (c) {
             case ' ' -> 3;
             case '!' -> 1;
